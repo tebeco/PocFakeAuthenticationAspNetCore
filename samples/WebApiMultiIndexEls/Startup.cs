@@ -30,7 +30,7 @@ namespace WebApiMultiIndexEls
             services.AddTransient<ILogGenerator, LogGenerator>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                    .AddCookie(options => options.LoginPath = new PathString("/api/account/login"));
+                    .AddCookie(options => options.LoginPath = new PathString("/api/user/login"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
