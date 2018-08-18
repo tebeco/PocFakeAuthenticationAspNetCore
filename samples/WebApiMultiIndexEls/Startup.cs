@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,8 +27,12 @@ namespace WebApiMultiIndexEls
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<ILogGenerator, LogGenerator>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options => options.LoginPath = new PathString("/api/account/login"));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,14 +41,15 @@ namespace WebApiMultiIndexEls
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseStaticFiles();
             }
             else
             {
                 app.UseHsts();
             }
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
