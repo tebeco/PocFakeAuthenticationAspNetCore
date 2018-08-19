@@ -17,12 +17,13 @@ namespace WebApiMultiIndexEls
     {
         public static int Main(string[] args)
         {
-            var logAsCode = new MySerilogLoggerFactory().GetDefaultLogger();
-            Log.Logger = globalLogger;
+            var defaultLogger = new MySerilogLoggerFactory().GetDefaultLogger();
+
+            Log.Logger = defaultLogger;
 
             try
             {
-                globalLogger.Information("Starting web host");
+                Log.Information("Starting web host");
 
                 CreateWebHostBuilder(args)
                     .Build()
@@ -39,14 +40,13 @@ namespace WebApiMultiIndexEls
             {
                 Log.CloseAndFlush();
             }
-
-
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseSerilog()
+                // .UseSerilog((webHostBuilderContext, loggerConfiguration) => { })
                 ;
     }
 }
