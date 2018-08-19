@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using SerilogAsCode;
 
 namespace WebApiMultiIndexEls
 {
@@ -16,18 +17,12 @@ namespace WebApiMultiIndexEls
     {
         public static int Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                // .WriteTo.Console()
-                .WriteTo.ColoredConsole()
-                .CreateLogger();
-
+            var logAsCode = new MySerilogLoggerFactory().GetDefaultLogger();
+            Log.Logger = globalLogger;
 
             try
             {
-                Log.Information("Starting web host");
+                globalLogger.Information("Starting web host");
 
                 CreateWebHostBuilder(args)
                     .Build()
@@ -51,6 +46,7 @@ namespace WebApiMultiIndexEls
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseSerilog();
+                .UseSerilog()
+                ;
     }
 }
