@@ -9,8 +9,9 @@ namespace WebApiMultiIndexEls.Pages
 {
     public class UnauthenticatedModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnPost()
         {
+            return RedirectToPage("Login");
         }
     }
 }

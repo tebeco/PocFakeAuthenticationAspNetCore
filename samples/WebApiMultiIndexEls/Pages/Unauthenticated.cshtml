@@ -1,6 +1,15 @@
 ﻿@page
 @model UnauthenticatedModel
-@{
-}
 
 <h1>Unauthenticated page</h1>
+
+<p>
+    If you see this page it mean you tried to access a resources protected by [Authorize] attribute
+    Please go to the login page to proceed
+</p>
+
+@{
+    <form asp-antiforgery="true">
+        Goto to login page : <input name="submit" value="Go to login page" type="submit" />
+    </form>
+}
