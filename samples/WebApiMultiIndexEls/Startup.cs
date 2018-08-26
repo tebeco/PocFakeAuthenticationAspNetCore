@@ -24,7 +24,7 @@ namespace WebApiMultiIndexEls
             services.AddTransient<ILogGenerator, LogGenerator>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                    .AddCookie(options => options.LoginPath = new PathString("/api/user/login"));
+                    .AddCookie(options => options.LoginPath = new PathString("/Unauthenticated"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
