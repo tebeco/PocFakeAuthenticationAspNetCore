@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApiMultiIndexEls
+namespace WebApiMultiIndexEls.Services
 {
     public interface ILogGenerator
     {
