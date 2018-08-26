@@ -17,10 +17,13 @@ namespace WebApiMultiIndexEls.Pages
         [BindProperty]
         public string UserName { get; set; }
 
-        public async Task<IActionResult> OnPost()
+
+        [BindProperty]
+        public bool BadCredential { get; set; }
+
+        public async Task OnPost()
         {
-            await _userService.LoginAsync(HttpContext, UserName);
-            return RedirectToPage("User");
+            BadCredential = !await _userService.LoginAsync(HttpContext, UserName);
         }
     }
 }

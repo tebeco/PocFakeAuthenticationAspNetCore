@@ -5,7 +5,12 @@
 
 @{
     <form asp-antiforgery="true">
-        User name: <input name="username" type="text" />
+        User name (use 'deny' to simulate bad credential) : <input name="username" type="text" />
         <input name="submit" value="login" type="submit" />
     </form>
+}
+
+@if (Model.BadCredential)
+{
+    <p>If you see this your credential has been rejected</p>
 }

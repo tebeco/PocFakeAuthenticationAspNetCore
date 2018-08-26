@@ -23,9 +23,10 @@ namespace WebApiMultiIndexEls.Controllers
         }
 
         [HttpPost]
-        public async Task Login([FromBody]string userName)
+        public async Task<IActionResult> Login([FromBody]string userName)
         {
-            await _userService.LoginAsync(HttpContext, userName);
+            var succeed = await _userService.LoginAsync(HttpContext, userName);
+            return succeed ? (IActionResult)Ok() : Unauthorized();
         }
 
         [HttpGet]
