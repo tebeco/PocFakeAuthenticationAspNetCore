@@ -10,9 +10,9 @@ namespace WebApiMultiIndexEls.Controllers
     [ApiController]
     public class LogController : ControllerBase
     {
-        private readonly ILogGenerator _logGenerator;
+        private readonly LogGenerator _logGenerator;
 
-        public LogController(ILogGenerator logGenerator)
+        public LogController(LogGenerator logGenerator)
         {
             _logGenerator = logGenerator;
         }

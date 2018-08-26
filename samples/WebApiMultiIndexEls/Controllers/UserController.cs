@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApiMultiIndexEls.Services;
 
 namespace WebApiMultiIndexEls.Controllers
 {
@@ -14,42 +15,23 @@ namespace WebApiMultiIndexEls.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet]
-        [Authorize]
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public ActionResult<User> Current()
-        {
-            return new User { UserName = HttpContext.User.Identity.Name };
-        }
+        private readonly UserService _userService;
 
-        [HttpGet]
-        public async Task Login([FromQuery]string returnUrl = null)
+        public UserController(UserService userService)
         {
-            var user = new User() { UserName = "FakeUser" };
-            await LoginAsync(user, returnUrl);
+            _userService = userService;
         }
 
         [HttpPost]
-        public async Task Login([FromBody]User user, [FromQuery] string returnUrl = null)
+        public async Task Login([FromBody]string userName)
         {
-            await LoginAsync(user, returnUrl);
-            Redirect(returnUrl ?? "/");
-        }
-
-        private async Task LoginAsync(User user, string returnUrl)
-        {
-            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-            identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+            await _userService.LoginAsync(HttpContext, userName);
         }
 
         [HttpGet]
-        public async Task<ActionResult<string>> Logout()
+        public async Task Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            return "You've been logged out";
+            await _userService.LogoutAsync(HttpContext);
         }
     }
 }
