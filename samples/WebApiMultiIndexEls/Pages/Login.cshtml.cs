@@ -21,9 +21,16 @@ namespace WebApiMultiIndexEls.Pages
         [BindProperty]
         public bool BadCredential { get; set; }
 
-        public async Task OnPost()
+        public async Task<IActionResult> OnPost()
         {
-            BadCredential = !await _userService.LoginAsync(HttpContext, UserName);
+            var succeed = await _userService.LoginAsync(HttpContext, UserName);
+            if (!succeed)
+            {
+                BadCredential = true;
+                return Page();
+            }
+
+            return RedirectToPage("User");
         }
     }
 }
