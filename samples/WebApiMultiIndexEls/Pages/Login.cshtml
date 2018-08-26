@@ -1,6 +1,11 @@
 ﻿@page
 @model LoginModel
-@{
-}
 
 <h1>Login page</h1>
+
+@{
+    <form asp-antiforgery="true">
+        User name: <input name="username" type="text" />
+        <input name="submit" value="login" type="submit" />
+    </form>
+}
