@@ -21,7 +21,8 @@ namespace WebApiMultiIndexEls
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ILogGenerator, LogGenerator>();
+            services.AddTransient<LogGenerator>();
+            services.AddTransient<UserService>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options => options.LoginPath = new PathString("/Unauthenticated"));

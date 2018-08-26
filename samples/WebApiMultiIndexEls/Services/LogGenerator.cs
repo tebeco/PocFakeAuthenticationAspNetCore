@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 namespace WebApiMultiIndexEls.Services
 {
 
-    public class LogGenerator : ILogGenerator
+    public class LogGenerator
     {
         private readonly ILogger<LogGenerator> _logger;
 
