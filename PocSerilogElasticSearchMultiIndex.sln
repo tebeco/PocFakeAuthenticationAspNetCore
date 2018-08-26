@@ -5,15 +5,21 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6CC746B-79EF-4D11-8F41-35A2E7C7A004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogAsCode", "src\SerilogAsCode\SerilogAsCode.csproj", "{11790F43-3DD7-46E0-B80E-3EA47275A1E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerilogAsCode", "src\SerilogAsCode\SerilogAsCode.csproj", "{11790F43-3DD7-46E0-B80E-3EA47275A1E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{EA90B573-76E7-4B9A-90DE-5ACE065B1D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiMultiIndexEls", "samples\WebApiMultiIndexEls\WebApiMultiIndexEls.csproj", "{E9E3E93B-A263-41E6-A266-69E009FCD991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiMultiIndexEls", "samples\WebApiMultiIndexEls\WebApiMultiIndexEls.csproj", "{E9E3E93B-A263-41E6-A266-69E009FCD991}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{012C649E-8F2D-4664-B568-A52417E194A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogAsCode.Tests", "test\SerilogAsCode.Tests\SerilogAsCode.Tests.csproj", "{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerilogAsCode.Tests", "test\SerilogAsCode.Tests\SerilogAsCode.Tests.csproj", "{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C793D419-3942-4349-B00B-7E4D13CB3ECB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{11790F43-3DD7-46E0-B80E-3EA47275A1E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -65,9 +68,15 @@ Global
 		{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5}.Release|x86.ActiveCfg = Release|Any CPU
 		{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{11790F43-3DD7-46E0-B80E-3EA47275A1E7} = {C6CC746B-79EF-4D11-8F41-35A2E7C7A004}
 		{E9E3E93B-A263-41E6-A266-69E009FCD991} = {EA90B573-76E7-4B9A-90DE-5ACE065B1D9A}
 		{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5} = {012C649E-8F2D-4664-B568-A52417E194A3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A41F7F9-09A3-4AAC-84AB-55DA8AAE6FFD}
 	EndGlobalSection
 EndGlobal
