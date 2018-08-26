@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{012C649E-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerilogAsCode.Tests", "test\SerilogAsCode.Tests\SerilogAsCode.Tests.csproj", "{1D25C1E2-AF1C-40A4-A5C3-6B9FB2B2D3F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C793D419-3942-4349-B00B-7E4D13CB3ECB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{C793D419-3942-4349-B00B-7E4D13CB3ECB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
