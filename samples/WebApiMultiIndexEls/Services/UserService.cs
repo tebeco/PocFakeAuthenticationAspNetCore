@@ -9,17 +9,20 @@ namespace WebApiMultiIndexEls.Services
 {
     public class UserService
     {
+        private readonly ILoggerFactory _loggerFactory;
+        private ILogger _loggerForLogin;
+
         public UserService(ILoggerFactory loggerFactory)
         {
-            LoggerFactory = loggerFactory;
+            _loggerFactory = loggerFactory;
+            _loggerForLogin = _loggerFactory.CreateLogger("LoginCategory");
         }
-
-        public ILoggerFactory LoggerFactory { get; }
 
         public async Task<bool> LoginAsync(HttpContext httpContext, string userName)
         {
             if(userName == "deny")
             {
+                _loggerForLogin.LogWarning("An failed login attempt happened for user {UserName}", userName);
                 return false;
             }
 
@@ -27,6 +30,8 @@ namespace WebApiMultiIndexEls.Services
             identity.AddClaim(new Claim(ClaimTypes.Name, userName));
 
             await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+            _loggerForLogin.LogInformation("An successfull login happened for user {UserName}", userName);
             return true;
         }
 
