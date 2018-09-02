@@ -1,4 +1,5 @@
-﻿using LogAsCode;
+﻿using System;
+using LogAsCode;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,10 +24,10 @@ namespace WebApiMultiIndexEls
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogAsCodeElasticSearch(options =>
-            {
-                options.CircuitBreaker.ErrorNumberBeforeSwitchOff = 5;
-            });
+            services.AddOptions();
+
+            services.AddLogAsCodeElasticSearch(new Uri[] { new Uri("https://localhost:9200") });
+
             services.AddTransient<LogGenerator>();
             services.AddTransient<UserService>();
 
@@ -39,7 +40,6 @@ namespace WebApiMultiIndexEls
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var elsOptions = app.ApplicationServices.GetService<IOptions<ElasticSearchOptions>>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

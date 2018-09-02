@@ -1,0 +1,11 @@
+﻿@page
+@using Newtonsoft.Json
+@model DebugModel
+
+@{
+    var elsOptions = JsonConvert.SerializeObject(Model.ElsOptions, Formatting.Indented);
+}
+
+<p>
+    els : '@elsOptions'
+</p>

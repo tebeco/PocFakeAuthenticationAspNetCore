@@ -23,6 +23,7 @@ namespace LogAsCode
 
         public static IServiceCollection AddLogAsCodeElasticSearch(this IServiceCollection services, Action<ElasticSearchOptions> configure)
         {
+            services.AddLogAsCodeElasticSearch();
             services.Configure(configure);
             return services;
         }
