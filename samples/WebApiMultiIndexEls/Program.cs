@@ -7,8 +7,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-// using Serilog;
-// using Serilog.Events;
 
 namespace WebApiMultiIndexEls
 {
@@ -16,34 +14,15 @@ namespace WebApiMultiIndexEls
     {
         public static int Main(string[] args)
         {
-            // var defaultLogger = new MySerilogLoggerFactory().GetDefaultLogger();
-
-            // Log.Logger = defaultLogger;
-
-            try
-            {
-                // Log.Information("Starting web host");
-
-                CreateWebHostBuilder(args)
-                    .Build()
-                    .Run();
-
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                // Log.Fatal(ex, "Host terminated unexpectedly");
-                return 1;
-            }
-            finally
-            {
-                // Log.CloseAndFlush();
-            }
+            CreateWebHostBuilder(args)
+                .Build()
+                .Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseLogAsCode();
                 // .UseSerilog()
                 // .UseSerilog((webHostBuilderContext, loggerConfiguration) => { })
                 ;

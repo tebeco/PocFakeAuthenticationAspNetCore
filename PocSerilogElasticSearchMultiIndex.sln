@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solutio
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogAsCode", "src\LogAsCode\LogAsCode.csproj", "{68F0D414-CCEE-4550-9F8D-1C5D0C3FF460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogAsCode", "src\LogAsCode.AspNetCore\LogAsCode.AspNetCore.csproj", "{68F0D414-CCEE-4550-9F8D-1C5D0C3FF460}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogAsCode.Serilog", "src\LogAsCode.Serilog\LogAsCode.Serilog.csproj", "{DEB69CE7-0BE1-433C-A9DA-1FDD40DD1A51}"
 EndProject
